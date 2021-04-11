@@ -28,3 +28,8 @@ This script is optimized to ubuntu 20.04
 ```
 ./script.sh remove
 ```
+## Flux identity
+
+```
+fluxctl identity
+```

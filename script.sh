@@ -67,7 +67,7 @@ function installFlux(){
     --git-user=ssadok \
     --git-email=ssadok@gmail.com \
     --git-url=git@github.com:ssadok/fluxcd.git \
-    --git-path=kubernetes/mongodb,kubernetes/services,kubernetes/deployments \
+    --git-path=kubernetes/mongodb,kubernetes/services,kubernetes/deployments,kubernetes/monitoring \
     --git-branch=main \
     --namespace=default | minikube kubectl -- apply -f -
 }
