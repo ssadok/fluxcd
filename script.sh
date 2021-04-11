@@ -48,7 +48,7 @@ function checkMinikubeSarted() {
     minikube status >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo "Starting minikube"
-        minikube start --memory=2048 --cpus=2 --ports=3000:3000 --ports=80:80 --ports=8081:8081
+        minikube start --memory=2048 --cpus=2 --ports=3000:30030 --ports=80:30080 --ports=8081:30081
     fi
 }
 
@@ -70,8 +70,6 @@ function installFlux(){
     --git-path=kubernetes/mongodb,kubernetes/services,kubernetes/deployments \
     --git-branch=main \
     --namespace=default | minikube kubectl -- apply -f -
-
-    fluxctl identity
 }
 
 function installHelm() {

@@ -24,5 +24,6 @@ spec:
         - name: ME_CONFIG_BASICAUTH_PASSWORD
           value: "aos"
         ports:
-        - containerPort: 8081
+        - name: mongoexpress
+          containerPort: 8081
         resources: {}
