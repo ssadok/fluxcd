@@ -1,0 +1,25 @@
+{
+  "name": "fluxcd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ssadok/fluxcd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssadok/fluxcd/issues"
+  },
+  "homepage": "https://github.com/ssadok/fluxcd#readme",
+  "dependencies": {
+    "dotenv": "^8.2",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.12.3"
+  }
+}

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aos-hello-world
+  labels:
+    app: aos-hello-world
+  annotations:
+    fluxcd.io/tag.aos-hello-world: semver:~1.0
+    fluxcd.io/automated: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: aos-hello-world
+  template:
+    metadata:
+      labels:
+        app: aos-hello-world
+    spec:
+      containers:
+      - name: aos-hello-world
+        image: ssadok/aos:v1.0.0
+        imagePullPolicy: "Always"
+        env:
+        - name: SERVER_PORT
+          value: "3000"
+        - name: DB_HOST
+          value: mongodb
+        - name: DB_PORT
+          value: "27017"
+        - name: DB_NAME
+          value: aos
+        ports:
+        - name: aos-hello-world
+          containerPort: 3000
+        resources: {}

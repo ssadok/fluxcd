@@ -1,0 +1,15 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: aos-hello-world
+  labels:
+    app: aos-hello-world
+spec:
+  type: ClusterIP
+  ports:
+  - name: aos-hello-world
+    port: 80
+    targetPort: aos-hello-world
+  selector:
+    app: aos-hello-world
