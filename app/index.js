@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 const express = require("express");
 const app = express();
 
-const port     = process.env.SERVER_PORT || 3000;
+const port     = process.env.SERVER_PORT || 3001;
+
 
 const dbHost = process.env.DB_HOST || "localhost";
 const dbPort = process.env.DB_PORT || 27017;
@@ -12,8 +13,12 @@ const dbName = process.env.DB_NAME || "aos";
 
 
 var mongoAdress = 'mongodb://'+dbHost+':'+dbPort+"/"+dbName
-mongoose.connect(mongoAdress);
 
+
+mongoose.connect(mongoAdress).catch(error => {
+  console.log(`Cannot connect to db error: ${error}`)
+  process.exit(1)
+});;
 
 var Message = mongoose.model("message", mongoose.Schema(
   {
@@ -23,7 +28,7 @@ var Message = mongoose.model("message", mongoose.Schema(
   }
 ));
 
-let version = require('fs').readFileSync('./version', 'utf8');
+let version = "require('fs').readFileSync('./version', 'utf8')";
 
 app.get('/', async (req, res) => {
   let message = await Message.findOne();
