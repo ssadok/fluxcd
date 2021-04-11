@@ -15,7 +15,7 @@ jobs:
               echo "${GITHUB_REF##*/}" > ./app/version
               cat ./app/version
       - name: Push to Docker Hub
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v1
         with:
           file: app/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
