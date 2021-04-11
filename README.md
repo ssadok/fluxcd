@@ -15,7 +15,7 @@ This script is optimized to ubuntu 20.04
 ## Start
 
 ````
-./script.sh 
+./script.sh start
 ````
 
 ## Install Fluxctl

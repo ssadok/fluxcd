@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: prom
+  namespace: monitoring
+spec:
+  releaseName: prom
+  chart:
+    repository: https://prometheus-community.github.io/helm-charts
+    name: prom
+  values:
+    grafana:
+      adminPassword: ed0ef863f6dc9c7f
