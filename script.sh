@@ -70,6 +70,19 @@ function installFlux(){
     --git-path=kubernetes/mongodb,kubernetes/services,kubernetes/deployments \
     --git-branch=main \
     --namespace=default | minikube kubectl -- apply -f -
+
+    fluxctl identity
+}
+
+function installHelm() {
+    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+    helm repo add fluxcd https://charts.fluxcd.io
+
+    helm upgrade -i helm-operator fluxcd/helm-operator \
+    --namespace default \
+    --set helm.versions=v3
+
 }
 
 if [ "$1" == "remove" ]; then
@@ -79,6 +92,7 @@ elif [ "$1" == "install" ]; then
     checkDocker
     checkMinikubeInstalled false
 elif [ "$1" == "flux" ]; then
+    installHelm
     checkFluxCTL
     installFlux
 else
