@@ -20,7 +20,3 @@ spec:
     usePassword: false
     persistence:
       enabled: false
-    securityContext:
-      enabled: true
-      fsGroup: 0
-      runAsUser: 0
