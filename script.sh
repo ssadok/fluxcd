@@ -89,14 +89,14 @@ if [ "$1" == "remove" ]; then
 elif [ "$1" == "install" ]; then
     checkDocker
     checkMinikubeInstalled false
-elif [ "$1" == "flux" ]; then
-    installHelm
-    checkFluxCTL
-    installFlux
 elif [ "$1" == "start" ]; then
     checkDocker
     checkMinikubeInstalled
     checkMinikubeSarted
+elif [ "$1" == "flux" ]; then
+    installHelm
+    checkFluxCTL
+    installFlux
 elif [ "$1" == "expose" ]; then
     minikube kubectl -- -n monitoring port-forward svc/prom-grafana 4000:80 --address 0.0.0.0
 fi

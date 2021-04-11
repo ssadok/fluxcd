@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 const express = require("express");
 const app = express();
 
-const port     = process.env.SERVER_PORT || 3001;
+const port   = process.env.SERVER_PORT || 3001;
 
 
 const dbHost = process.env.DB_HOST || "localhost";
@@ -28,7 +28,7 @@ var Message = mongoose.model("message", mongoose.Schema(
   }
 ));
 
-let version = "require('fs').readFileSync('./version', 'utf8')";
+let version = require('fs').readFileSync('./version', 'utf8');
 
 app.get('/', async (req, res) => {
   let message = await Message.findOne();
