@@ -48,7 +48,7 @@ function checkMinikubeSarted() {
     minikube status >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo "Starting minikube"
-        minikube start --memory=4096 --cpus=2 --ports=3000:30030 --ports=80:30080 --ports=8081:30081
+        minikube start --memory=4096 --cpus=2 --ports=80:30080 --ports=8081:30081
     fi
 }
 
