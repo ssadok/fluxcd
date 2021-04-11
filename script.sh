@@ -69,12 +69,12 @@ function installFlux(){
     --git-url=git@github.com:ssadok/fluxcd.git \
     --git-path=kubernetes/mongodb,kubernetes/services,kubernetes/deployments \
     --git-branch=main \
-    --namespace=flux | kubectl apply -f -
+    --namespace=default | minikube kubectl -- apply -f -
 }
 
 if [ "$1" == "remove" ]; then
     uninstallMinikube
-    rm -rf /usr/local/bin/fluxctl
+    sudo rm -rf /usr/local/bin/fluxctl
 elif [ "$1" == "install" ]; then
     checkDocker
     checkMinikubeInstalled false
