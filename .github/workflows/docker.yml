@@ -13,9 +13,9 @@ jobs:
       - name: update version
         run: echo "${GITHUB_REF##*/}" > ./app/version
       - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
-          file: ./app/Dockerfile
+          dockerfile: ./app/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ssadok/aos
