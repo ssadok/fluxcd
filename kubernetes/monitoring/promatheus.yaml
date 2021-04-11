@@ -4,13 +4,12 @@ kind: HelmRelease
 metadata:
   name: prom
   namespace: default
-  annotations:
-    fluxcd.io/automated: "false"
 spec:
   releaseName: prom
   chart:
     repository: https://prometheus-community.github.io/helm-charts
     name: prometheus-community/kube-prometheus-stack
+    version: 14.6.2
   values:
     grafana:
       adminPassword: ed0ef863f6dc9c7f
