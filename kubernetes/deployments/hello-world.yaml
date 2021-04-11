@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: aos-hello-world
-        image: ssadok/aos:v1.0.9
+        image: ssadok/aos:v1.0.10
         imagePullPolicy: "Always"
         env:
         - name: SERVER_PORT
