@@ -2,10 +2,10 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: prom
+  name: myprom
   namespace: default
 spec:
-  releaseName: prom
+  releaseName: myprom
   chart:
     repository: https://prometheus-community.github.io/helm-charts
     name: prometheus-community/kube-prometheus-stack
