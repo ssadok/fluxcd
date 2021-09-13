@@ -27,10 +27,27 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+        
+        
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF##*/})"
+        id: extract_branch    
+      
+      - name: Extract tag name
+        shell: bash
+        run: echo "##[set-output name=tag;]$(echo ${GITHUB_SHA::8})"
+        id: extract_tag   
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@master
 
       - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2.4.0
         with:
-          path: app
-          repository: 347041458788.dkr.ecr.eu-west-3.amazonaws.com/ssadok-fluxcd-test
+          file: app/Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          tags: 347041458788.dkr.ecr.eu-west-3.amazonaws.com/ssadok-fluxcd-test:${{ steps.extract_branch.outputs.branch }}-${{ steps.extract_tag.outputs.tag }}
+          push: true
           tag_with_ref: true
