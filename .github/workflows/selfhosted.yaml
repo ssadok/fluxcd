@@ -1,0 +1,25 @@
+name: Self-Hosted byukd
+on:
+  push:
+    branches:
+      - main
+  release:
+    tags:
+      - 'v*.*.*'
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: self-hosted
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: update version
+        run: |
+              echo "${GITHUB_REF##*/}" > ./app/version
+              cat ./app/version
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          path: app
+          repository: 347041458788.dkr.ecr.eu-west-3.amazonaws.com/fluxcd-test
+          tag_with_ref: true
